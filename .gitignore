@@ -1,0 +1,11 @@
+out
+node_modules
+.vscode-test/
+*.vsix
+
+.vscode
+.idea
+.DS_Store
+
+resources/*.js
+resources/*.js.map

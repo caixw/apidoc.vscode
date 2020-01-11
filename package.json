@@ -1,0 +1,70 @@
+{
+	"name": "apidoc",
+	"displayName": "apidoc",
+	"description": "apidoc.tools 扩展工具",
+	"version": "0.0.1",
+	"publisher": "caixw",
+    "author": {
+        "name": "caixw",
+        "url": "https://github.com/caixw"
+	},
+	"keywords": [
+		"apidoc",
+		"restful",
+		"api",
+		"documents",
+		"tools"
+	],
+	"license": "MIT",
+    "homepage": "https://apidoc.tools",
+    "bugs": {
+        "url": "https://github.com/caixw/apidoc.vscode/issues",
+        "email": "xnotepad@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/caixw/apidoc.vscode.git"
+    },
+	"engines": {
+		"vscode": "^1.36.1"
+	},
+	"galleryBanner": {
+        "color": "#5c2d91",
+        "theme": "dark"
+    },
+    "icon": "resources/icon.png",
+    "categories": [
+		"Programming Languages",
+		"Snippets"
+    ],
+	"activationEvents": [
+		"onCommand:extension.helloWorld"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "Hello World"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.39.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.0.2"
+	}
+}

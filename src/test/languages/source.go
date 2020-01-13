@@ -5,6 +5,12 @@ package main
  * <undefined>undefined</undefined>
  * <apidoc version="1.0.0">
  *    <title>xxx</title>
+ *    <description type="markdown">
+ *    <![CDATA[
+ *        # title
+ *        ## sub-title
+ *    ]]>
+ *    </description>
  *
  *    <api version="1.0.0">
  *        <title>xxx</title>
@@ -34,6 +40,12 @@ package main
 */
 
 // <api version="1.0.0">
+//    <description type="markdown">
+//    <![CDATA[
+//        # title
+//        ## sub-title
+//    ]]>
+//    </description>
 //     <title>xxx</title>
 // </api>
 

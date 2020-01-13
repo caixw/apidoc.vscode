@@ -1,7 +1,7 @@
 {
 	"name": "apidoc",
 	"displayName": "apidoc",
-	"description": "apidoc.tools 扩展工具",
+	"description": "%description%",
 	"version": "0.0.1",
 	"publisher": "caixw",
     "author": {
@@ -36,16 +36,52 @@
     "categories": [
 		"Programming Languages",
 		"Snippets"
-    ],
+	],
 	"activationEvents": [
 		"onCommand:extension.helloWorld"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
+		"languages": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"id": "apidoc",
+				"aliases": [
+					"APIDOC"
+				],
+				"extensions": [
+					".apidoc"
+				],
+				"mimetypes": [
+					"application/xml",
+					"text/xml"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "apidoc",
+				"scopeName": "text.xml.apidoc",
+				"path": "./syntaxes/apidoc.tmLanguage.json",
+				"injectTo": [
+					"source.cs",
+					"source.c",
+					"source.cpp",
+					"source.d",
+					"source.erlang",
+					"source.go",
+					"source.groovy",
+					"source.java",
+					"source.js",
+					"source.kotlin",
+					"source.pascal",
+					"source.perl",
+					"source.php",
+					"source.python",
+					"source.ruby",
+					"source.rust",
+					"source.scala",
+					"source.swift"
+				]
 			}
 		]
 	},

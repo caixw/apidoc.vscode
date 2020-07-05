@@ -2,7 +2,7 @@
 	"name": "apidoc",
 	"displayName": "apidoc",
 	"description": "%description%",
-	"version": "0.0.1",
+	"version": "7.0.0",
 	"publisher": "caixw",
 	"preview": true,
 	"author": {
@@ -39,49 +39,58 @@
 		"Snippets"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onLanguage:apidoc",
+		"onLanguage:csharp",
+		"onLanguage:c",
+		"onLanguage:cpp",
+		"onLanguage:d",
+		"onLanguage:dart",
+		"onLanguage:erlang",
+		"onLanguage:go",
+		"onLanguage:groovy",
+		"onLanguage:java",
+		"onLanguage:javascript",
+		"onLanguage:kotlin",
+		"onLanguage:lua",
+		"onLanguage:pascal",
+		"onLanguage:perl",
+		"onLanguage:php",
+		"onLanguage:python",
+		"onLanguage:ruby",
+		"onLanguage:rust",
+		"onLanguage:scala",
+		"onLanguage:swift"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "%config-title%",
+			"properties": {
+				"conf.cmd": {
+					"type": "string",
+					"default": "apidoc",
+					"description": "%cmd-desc%"
+				},
+				"conf.port": {
+					"type": "string",
+					"default": ":8080",
+					"description": "%port-desc%"
+				}
+			}
+		},
 		"languages": [
 			{
 				"id": "apidoc",
 				"aliases": [
 					"APIDOC"
 				],
-				"extensions": [
-					".apidoc"
+				"filenames": [
+					"apidoc.xml"
 				],
 				"mimetypes": [
 					"application/xml",
 					"text/xml"
-				]
-			}
-		],
-		"grammars": [
-			{
-				"language": "apidoc",
-				"scopeName": "text.xml.apidoc",
-				"path": "./syntaxes/apidoc.tmLanguage.json",
-				"injectTo": [
-					"source.cs",
-					"source.c",
-					"source.cpp",
-					"source.d",
-					"source.erlang",
-					"source.go",
-					"source.groovy",
-					"source.java",
-					"source.js",
-					"source.kotlin",
-					"source.pascal",
-					"source.perl",
-					"source.php",
-					"source.python",
-					"source.ruby",
-					"source.rust",
-					"source.scala",
-					"source.swift"
 				]
 			}
 		]
@@ -89,7 +98,7 @@
 	"scripts": {
 		"vscode:prepublish": "gulp compile",
 		"compile": "gulp compile",
-		"watch": "gulp watch",
+		"watch": "$tsc watch",
 		"pretest": "gulp compile",
 		"test": "node ./out/test/runTest.js",
 		"clean": "gulp clean",
@@ -100,6 +109,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^10.12.21",
+		"@types/semver": "^7.3.1",
 		"@types/vscode": "^1.36.1",
 		"del": "^5.1.0",
 		"glob": "^7.1.4",
@@ -112,5 +122,9 @@
 		"typescript": "^3.6.2",
 		"vsce": "^1.66.0",
 		"vscode-test": "^1.0.2"
+	},
+	"dependencies": {
+		"semver": "^7.3.2",
+		"vscode-languageclient": "^5.2.1"
 	}
 }

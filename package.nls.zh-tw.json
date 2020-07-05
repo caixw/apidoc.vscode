@@ -1,3 +1,14 @@
 {
-    "description": "RESTful API 文檔生成工具"
+    "description": "RESTful API 文檔生成工具",
+
+    "ok": "確定",
+
+    "config-title": "APIDOC 配置",
+    "cmd-desc": "apidoc 文件的路徑，LSP 服務從該程序獲取。",
+    "port-desc": "LSP 服務的端口。",
+
+    "not-found-apidoc": "未找到 apidoc，需要下載該工具才能執行相關操作！",
+    "version-incompatible": "當前的 apidoc 與插件需要的版本不兼容，請從官網重新安裝 apidoc！",
+
+    "client-not-has-capabilities": "客戶端未指定任何功能信息"
 }

@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+
+- 添加对 LSP 的支持；
+- 添加基本的配置项；
+
 ## [v0.0.1]
 
 - Initial release

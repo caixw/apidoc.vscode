@@ -17,7 +17,7 @@ const outDir = extension.options.outDir;
 // 编译当前的扩展
 function compileExtension() {
     let s = extension.src()
-        .pipe(cached('extension'))
+        .pipe(cached('apidoc.vscode'))
 
     if (extension.options.sourceMap) {
         s = s.pipe(sourcemaps.init())
@@ -69,4 +69,4 @@ exports.package = gulp.series(
     createVSIX,
 );
 
-exports.watch = watchExtension;
+exports.watch = gulp.parallel(watchExtension);

@@ -1,4 +1,4 @@
-# apidoc README
+# apidoc
 
 [![Yarn Build Status](https://dev.azure.com/caixw/apidoc.vscode/_apis/build/status/caixw.apidoc.vscode?branchName=master)](https://dev.azure.com/caixw/apidoc.vscode/_build/latest?definitionId=1&branchName=master)
 [![Version](https://vsmarketplacebadge.apphb.com/version-short/caixw.apidoc.svg)](https://marketplace.visualstudio.com/items?itemName=caixw.apidoc)
@@ -7,8 +7,6 @@
 [![dependencies Status](https://david-dm.org/caixw/apidoc.vscode/status.svg)](https://david-dm.org/caixw/apidoc.vscode)
 
 <https://apidoc.tools> 的 vscode 扩展
-
-[![screenshot](./resources/screenshot.gif)](./resources/screenshot.gif)
 
 ## 版权
 

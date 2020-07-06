@@ -1,0 +1,27 @@
+{
+    "api": {
+        "prefix": "<api ",
+        "description": "apidoc 文档中的 api 元素",
+        "body": [
+            "<api method=\"${1:GET}\" summary=\"${2}\">",
+                "<path path=\"${3}\" />",
+                "<server>\"${4}\"</server>",
+                "<response status=\"${5}\" type=\"${6}\">",
+                "</response>",
+            "</api>"
+        ]
+    },
+
+    "apidoc": {
+        "prefix": "<apidoc ",
+        "body": [
+            "<apidoc version=\"${1}\">",
+                "<title>${2}</title>",
+                "<description type=\"${3:html}\"><![CDATA[",
+                    "${4}",
+                "]]></description>",
+            "</apidoc>"
+        ],
+        "description": "apidoc 文档中的 apidoc 元素"
+    }
+}

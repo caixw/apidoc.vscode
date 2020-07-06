@@ -98,9 +98,9 @@
 	"scripts": {
 		"vscode:prepublish": "gulp compile",
 		"compile": "gulp compile",
-		"watch": "$tsc watch",
+		"watch": "gulp watch",
 		"pretest": "gulp compile",
-		"test": "node ./out/src/test/runTest.js",
+		"test": "node ./out/test/runTest.js",
 		"clean": "gulp clean",
 		"package": "gulp package",
 		"publish": "gulp publish"

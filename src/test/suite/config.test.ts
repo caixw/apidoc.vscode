@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 import * as assert from 'assert';
-import * as config from '@/config';
+import * as config from '../../config';
 
 interface Selector {
     language: string;
@@ -9,10 +9,14 @@ interface Selector {
 }
 
 suite('config test suite', () => {
+    test('name', ()=>{
+        assert.equal(config.name, 'apidoc');
+    });
+
     test('document selector', () => {
         const selector = config.documentSelector();
 
-        assert.ok(selector.length > 0)
+        assert.ok(selector.length > 0);
 
         for (const item of selector) {
             const s = <Selector>item;

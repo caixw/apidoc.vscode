@@ -2,27 +2,18 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es6",
-        "outDir": "out",
-        "lib": [
-            "es6"
-        ],
+        "outDir": ".",
         "sourceMap": true,
         "rootDir": ".",
         "strict": true,
         "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "baseUrl": ".",
-        "paths": {
-            "@/package.json": [
-                "./package.json"
-            ],
-            "@/*": [
-                "./src/*"
-            ]
-        }
+        "composite": true
     },
     "exclude": [
         "node_modules",
         ".vscode-test"
+    ],
+    "files": [
+        "package.json"
     ]
 }

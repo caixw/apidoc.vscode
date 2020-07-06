@@ -9,10 +9,9 @@ const sourcemaps = require('gulp-sourcemaps');
 const cached = require('gulp-cached');
 const vsce = require('vsce');
 
-const extension = ts.createProject('tsconfig.json');
+const extension = ts.createProject('./src/tsconfig.json');
 
-const rootDir = extension.options.rootDir;
-const outDir = extension.options.outDir;
+const outDir = './out';
 
 // 编译当前的扩展
 function compileExtension() {
@@ -33,14 +32,7 @@ async function clean() {
 }
 
 function watchExtension() {
-    return gulp.watch(
-        rootDir,
-        {
-            delay: 500,
-            queue: true,
-        },
-        compileExtension,
-    );
+    gulp.watch('./src/**/*.ts',compileExtension);
 }
 
 function createVSIX() {
@@ -69,4 +61,4 @@ exports.package = gulp.series(
     createVSIX,
 );
 
-exports.watch = gulp.parallel(watchExtension);
+exports.watch = gulp.series(compileExtension, watchExtension)

@@ -100,14 +100,14 @@
 		"compile": "gulp compile",
 		"watch": "$tsc watch",
 		"pretest": "gulp compile",
-		"test": "node ./out/test/runTest.js",
+		"test": "node ./out/src/test/runTest.js",
 		"clean": "gulp clean",
 		"package": "gulp package",
 		"publish": "gulp publish"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
+		"@types/mocha": "^7.0.2",
 		"@types/node": "^10.12.21",
 		"@types/semver": "^7.3.1",
 		"@types/vscode": "^1.36.1",
@@ -117,9 +117,9 @@
 		"gulp-cached": "^1.1.1",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-typescript": "^5.0.1",
-		"mocha": "^6.1.4",
+		"mocha": "^7.1.1",
 		"tslint": "^5.12.1",
-		"typescript": "^3.6.2",
+		"typescript": "^3.8.3",
 		"vsce": "^1.66.0",
 		"vscode-test": "^1.0.2"
 	},

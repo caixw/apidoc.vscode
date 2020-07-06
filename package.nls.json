@@ -1,14 +1,7 @@
 {
     "description": "extension for https://apidoc.tools",
 
-    "ok": "OK",
-
     "config-title": "APIDOC Configuration",
-    "cmd-desc": "apidoc path",
-    "port-desc": "LSP server port",
-
-    "not-found-apidoc": "command apidoc not found",
-    "version-incompatible": "version incompatible",
-
-    "client-not-has-capabilities": "client not has any capabilities"
+    "config-cmd-desc": "apidoc path",
+    "config-port-desc": "LSP server port"
 }

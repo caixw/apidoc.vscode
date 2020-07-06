@@ -8,6 +8,12 @@ import {
     ServerOptions,
 } from 'vscode-languageclient';
 
+import * as locale from './locale/locale';
+
+
+// 初始化本地化信息
+locale.init();
+
 let client: LanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {

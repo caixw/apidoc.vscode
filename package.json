@@ -69,13 +69,13 @@
 			"properties": {
 				"conf.cmd": {
 					"type": "string",
-					"default": "apidoc",
-					"description": "%cmd-desc%"
+					"default": "",
+					"description": "%config-cmd-desc%"
 				},
 				"conf.port": {
 					"type": "string",
 					"default": ":8080",
-					"description": "%port-desc%"
+					"description": "%config-port-desc%"
 				}
 			}
 		},
@@ -111,6 +111,7 @@
 		"@types/node": "^10.12.21",
 		"@types/semver": "^7.3.1",
 		"@types/vscode": "^1.36.1",
+		"@types/which": "^1.3.2",
 		"del": "^5.1.0",
 		"glob": "^7.1.4",
 		"gulp": "^4.0.2",
@@ -125,6 +126,7 @@
 	},
 	"dependencies": {
 		"semver": "^7.3.2",
-		"vscode-languageclient": "^5.2.1"
+		"vscode-languageclient": "^5.2.1",
+		"which": "^2.0.2"
 	}
 }

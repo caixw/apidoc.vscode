@@ -33,7 +33,7 @@ export function documentSelector(): DocumentSelector {
     for (const item of pkg.activationEvents) {
         selector.push({
             scheme: 'file',
-            language: item.split(":")[1],
+            language: item.split(':')[1],
         });
     }
     return selector;
@@ -57,7 +57,8 @@ export async function getConfiguration(): Promise<Configuration | null> {
     }
 
     const { stdout, stderr } = await exec(`${cmd} version -kind=apidoc`, opt);
-    if (!stderr) {
+    if (stderr.trim()) {
+        console.error(stderr);
         await window.showWarningMessage(l('not-found-apidoc'), l('ok'));
         return null;
     }

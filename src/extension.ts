@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 
 import * as vscode from 'vscode';
-import * as config from './config';
 import {
     LanguageClient,
     LanguageClientOptions,
     ServerOptions,
 } from 'vscode-languageclient';
 
+import * as config from './config';
 import * as locale from './locale/locale';
 
 
@@ -33,7 +33,9 @@ export async function activate(context: vscode.ExtensionContext) {
     client.onReady().then(() => {
         const c = client.initializeResult && client.initializeResult.capabilities;
         if (!c) {
-            return vscode.window.showErrorMessage('%client-not-has-capabilities%', '%ok%');
+            const msg = locale.l('client-not-has-capabilities');
+            const ok = locale.l('ok');
+            return vscode.window.showErrorMessage(msg, ok);
         }
     });
 

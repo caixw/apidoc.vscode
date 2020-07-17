@@ -27,7 +27,7 @@
 		"url": "https://github.com/caixw/apidoc.vscode.git"
 	},
 	"engines": {
-		"vscode": "^1.36.1"
+		"vscode": "^1.46.0"
 	},
 	"galleryBanner": {
 		"color": "#5c2d91",
@@ -52,6 +52,7 @@
 		"onLanguage:javascript",
 		"onLanguage:kotlin",
 		"onLanguage:lua",
+		"onLanguage:lisp",
 		"onLanguage:pascal",
 		"onLanguage:perl",
 		"onLanguage:php",
@@ -59,7 +60,8 @@
 		"onLanguage:ruby",
 		"onLanguage:rust",
 		"onLanguage:scala",
-		"onLanguage:swift"
+		"onLanguage:swift",
+		"onLanguage:zig"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -110,7 +112,7 @@
 		"@types/mocha": "^7.0.2",
 		"@types/node": "^10.12.21",
 		"@types/semver": "^7.3.1",
-		"@types/vscode": "^1.36.1",
+		"@types/vscode": "^1.46.1",
 		"@types/which": "^1.3.2",
 		"del": "^5.1.0",
 		"glob": "^7.1.4",

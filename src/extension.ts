@@ -17,12 +17,15 @@ locale.init();
 let client: LanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {
+    config.active();
+
     const cfg = await config.getConfiguration();
     if (cfg === null) { return; }
 
     const serverOptions: ServerOptions = {
         command: cfg.command,
-        args: ['lsp', '-p=' + cfg.port, '-m=stdio', '-h']
+        args: ['lsp', '-p=' + cfg.port, '-m='+config.lspMode, '-h'],
+        options: {'env': config.environment}
     };
 
     const clientOptions: LanguageClientOptions = {
@@ -43,6 +46,8 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {
+    config.deactivate();
+
     if (client) {
         return client.stop();
     }

@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: MIT
 
+// 当前文件提供了整个项目中所有配置相关的内容。
+
 import { DocumentSelector } from 'vscode-languageclient';
 import { workspace, window } from 'vscode';
 import { promisify } from 'util';
@@ -12,19 +14,41 @@ import { l } from './locale/locale';
 
 const exec = promisify(cp.exec);
 
-// 执行 apidoc 的默认选项
-//
-// 由于查询 apidoc 版本号的指令早于 init 指令执行，
-// 所以得在查询 apidoc version 时，保证环境变量的正确。
-const opt = {
-    env: {
-        'LANG': 'cmn-Hans'
-    }
+// 提供的默认环境变量
+export const environment = {
+    'LANG': 'cmn-Hans'
 };
+
+const quickSuggestionsKey = 'editor.quickSuggestions'; // 需要修改的配置项名称
+let oldQuickSuggestions: any = {}; // 系统的默认的配置项，方便后期恢复用。
+const newQuickSuggestions = { 'comments': true }; // 需要修改的项；
+
+// 初始化配置相关的信息
+export function active() {
+    const cfg = workspace.getConfiguration();
+
+    oldQuickSuggestions = cfg.get(quickSuggestionsKey);
+    cfg.update(quickSuggestionsKey, Object.assign(newQuickSuggestions, oldQuickSuggestions));
+}
+
+// 恢复旧有的配置项
+export function deactivate() {
+    const cfg = workspace.getConfiguration();
+    cfg.update(quickSuggestionsKey, oldQuickSuggestions);
+}
 
 export const name = pkg.name;
 
+// 当前插件的版本号
+//
+// 插件版本号应该与 apidoc 的主版本号始终相同，
+// 可以直接通过此值与 apidoc 的主版本号是否相同判断兼容性。
 export const version = pkg.version;
+
+// 连接 lsp 的模式
+//
+// 可以是 stdio、tcp、udp 等。
+export const lspMode = 'stdio';
 
 
 // 根据 package.json 中的 activationEvents 生成 DocumentSelector
@@ -56,6 +80,7 @@ export async function getConfiguration(): Promise<Configuration | null> {
         return null;
     }
 
+    const opt = { 'env': environment };
     const { stdout, stderr } = await exec(`${cmd} version -kind=apidoc`, opt);
     if (stderr.trim()) {
         console.error(stderr);

@@ -24,17 +24,17 @@ let oldQuickSuggestions: any = {}; // 系统的默认的配置项，方便后期
 const newQuickSuggestions = { 'comments': true }; // 需要修改的项；
 
 // 初始化配置相关的信息
-export function active() {
+export async function activate(): Promise<void> {
     const cfg = workspace.getConfiguration();
 
     oldQuickSuggestions = cfg.get(quickSuggestionsKey);
-    cfg.update(quickSuggestionsKey, Object.assign(newQuickSuggestions, oldQuickSuggestions));
+    return await cfg.update(quickSuggestionsKey, Object.assign({ ...oldQuickSuggestions }, newQuickSuggestions ));
 }
 
 // 恢复旧有的配置项
-export function deactivate() {
+export async function deactivate(): Promise<void> {
     const cfg = workspace.getConfiguration();
-    cfg.update(quickSuggestionsKey, oldQuickSuggestions);
+    return await cfg.update(quickSuggestionsKey, oldQuickSuggestions);
 }
 
 export const name = pkg.name;

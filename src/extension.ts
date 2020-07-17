@@ -17,7 +17,7 @@ locale.init();
 let client: LanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {
-    config.active();
+    await config.activate();
 
     const cfg = await config.getConfiguration();
     if (cfg === null) { return; }
@@ -45,8 +45,8 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(client.start());
 }
 
-export function deactivate() {
-    config.deactivate();
+export async function deactivate() {
+    await config.deactivate();
 
     if (client) {
         return client.stop();

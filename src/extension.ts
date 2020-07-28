@@ -6,6 +6,7 @@ import {
     LanguageClientOptions,
     ServerOptions,
 } from 'vscode-languageclient';
+import { SemanticTokensFeature } from 'vscode-languageclient/lib/semanticTokens.proposed';
 
 import * as config from './config';
 import * as locale from './locale/locale';
@@ -33,6 +34,7 @@ export async function activate(context: vscode.ExtensionContext) {
     };
 
     client = new LanguageClient(config.name, `${config.name} lsp server`, serverOptions, clientOptions);
+    client.registerFeature(new SemanticTokensFeature(client)); // TODO 直到 LSP 3.16.0 正式上线
     client.onReady().then(() => {
         const c = client.initializeResult && client.initializeResult.capabilities;
         if (!c) {

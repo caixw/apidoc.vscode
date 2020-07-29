@@ -15,6 +15,7 @@
 - textDocument/publishDiagnostics
 - textDocument/foldingRange
 - textDocument/completion
+- textDocument/semanticTokens
 
 ## 版权
 

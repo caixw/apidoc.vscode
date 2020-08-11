@@ -13,6 +13,7 @@ import * as locale from './locale/locale';
 
 // 初始化本地化信息
 locale.init();
+config.init();
 
 let client: LanguageClient;
 
@@ -55,6 +56,16 @@ function createStatusBarItem(context: vscode.ExtensionContext) {
     statusBarItem.tooltip = config.name + ' ' + config.version;
     statusBarItem.show();
     context.subscriptions.push(statusBarItem);
+
+    const disposable = vscode.window.onDidChangeActiveTextEditor(()=>{
+        const id = vscode.window.activeTextEditor?.document.languageId;
+        if (!id || config.languages.includes(id)) {
+            statusBarItem.show();
+        } else {
+            statusBarItem.hide();
+        }
+    });
+    context.subscriptions.push(disposable);
 }
 
 export async function deactivate() {

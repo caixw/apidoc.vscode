@@ -9,6 +9,8 @@ interface Selector {
     scheme: string;
 }
 
+config.init();
+
 suite('config test suite', () => {
     test('name', () => {
         assert.equal(config.name, 'apidoc');

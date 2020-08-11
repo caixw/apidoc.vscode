@@ -19,14 +19,25 @@ export const environment = {
     'LANG': 'cmn-Hans'
 };
 
+// apidoc 支持的语言 ID
+export let languages: Array<string> = [];
+
 const quickSuggestionsKey = 'editor.quickSuggestions'; // 需要修改的配置项名称
 let oldQuickSuggestions: any = {}; // 系统的默认的配置项，方便后期恢复用。
 const newQuickSuggestions = { 'comments': true }; // 需要修改的项；
 
+// 初始化当前文件
+//
+// 应该在调用任何内容之前调用此函数进行初始化
+export function init() {
+    for(const item of pkg.activationEvents) {
+        languages.push(item.split(':')[1]);
+    }
+}
+
 // 初始化配置相关的信息
 export async function activate(): Promise<void> {
     const cfg = workspace.getConfiguration();
-
     oldQuickSuggestions = cfg.get(quickSuggestionsKey);
     return await cfg.update(quickSuggestionsKey, Object.assign({ ...oldQuickSuggestions }, newQuickSuggestions ));
 }
@@ -54,10 +65,10 @@ export const lspMode = 'stdio';
 // 根据 package.json 中的 activationEvents 生成 DocumentSelector
 export function documentSelector(): DocumentSelector {
     const selector: DocumentSelector = [];
-    for (const item of pkg.activationEvents) {
+    for (const lang of languages) {
         selector.push({
             scheme: 'file',
-            language: item.split(':')[1],
+            language: lang,
         });
     }
     return selector;

@@ -16,6 +16,8 @@
 - textDocument/foldingRange
 - textDocument/completion
 - textDocument/semanticTokens
+- textDocument/references
+- textDocument/definition
 
 ## 版权
 

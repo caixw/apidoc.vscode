@@ -18,7 +18,11 @@ let client: LanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {
     await config.activate();
+    await createLSP(context);
+    createStatusBarItem(context);
+}
 
+async function createLSP(context: vscode.ExtensionContext) {
     const cfg = await config.getConfiguration();
     if (cfg === null) { return; }
 
@@ -43,6 +47,14 @@ export async function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(client.start());
+}
+
+function createStatusBarItem(context: vscode.ExtensionContext) {
+    const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+    statusBarItem.text = config.name;
+    statusBarItem.tooltip = config.name + ' ' + config.version;
+    statusBarItem.show();
+    context.subscriptions.push(statusBarItem);
 }
 
 export async function deactivate() {

@@ -6,10 +6,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [v7.1.0]
+
 ### Added
 
 - 添加对 LSP 的支持；
 - 添加基本的配置项；
+
+### Changed
+
+- 版本号改为与主项目 <https://github.com/caixw/apidoc> 版本号相同；
 
 ## [v0.0.1]
 

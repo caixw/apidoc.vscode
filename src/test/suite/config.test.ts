@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 
+import { workspace } from 'vscode';
 import * as assert from 'assert';
 import * as config from '../../config';
 
@@ -9,7 +10,7 @@ interface Selector {
 }
 
 suite('config test suite', () => {
-    test('name', ()=>{
+    test('name', () => {
         assert.equal(config.name, 'apidoc');
     });
 
@@ -24,4 +25,22 @@ suite('config test suite', () => {
             assert.ok(s.language.length > 0);
         }
     });
+
+    test('activate and deactivate', async () => {
+        const cfg = workspace.getConfiguration();
+        let opt = cfg.get<Option>('editor.quickSuggestions');
+        const comments = opt!.comments;
+
+        await config.activate();
+        opt = cfg.get<Option>('editor.quickSuggestions');
+        assert.ok(opt!.comments);
+
+        await config.deactivate();
+        opt = cfg.get<Option>('editor.quickSuggestions');
+        assert.equal(opt!.comments, comments);
+    });
 });
+
+interface Option {
+    comments?: boolean;
+}

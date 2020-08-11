@@ -1,22 +1,31 @@
 // SPDX-License-Identifier: MIT
 
-import * as vscode from 'vscode';
-import * as config from './config';
+import  vscode from 'vscode';
 import {
     LanguageClient,
     LanguageClientOptions,
     ServerOptions,
 } from 'vscode-languageclient';
 
+import * as config from './config';
+import * as locale from './locale/locale';
+
+
+// 初始化本地化信息
+locale.init();
+
 let client: LanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {
+    await config.activate();
+
     const cfg = await config.getConfiguration();
     if (cfg === null) { return; }
 
     const serverOptions: ServerOptions = {
         command: cfg.command,
-        args: ['lsp', '-p=' + cfg.port, '-m=stdio', '-h']
+        args: ['lsp', '-p=' + cfg.port, '-m='+config.lspMode, '-h'],
+        options: {'env': config.environment}
     };
 
     const clientOptions: LanguageClientOptions = {
@@ -27,14 +36,18 @@ export async function activate(context: vscode.ExtensionContext) {
     client.onReady().then(() => {
         const c = client.initializeResult && client.initializeResult.capabilities;
         if (!c) {
-            return vscode.window.showErrorMessage('%client-not-has-capabilities%', '%ok%');
+            const msg = locale.l('client-not-has-capabilities');
+            const ok = locale.l('ok');
+            return vscode.window.showErrorMessage(msg, ok);
         }
     });
 
     context.subscriptions.push(client.start());
 }
 
-export function deactivate() {
+export async function deactivate() {
+    await config.deactivate();
+
     if (client) {
         return client.stop();
     }

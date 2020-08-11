@@ -59,7 +59,7 @@ function createStatusBarItem(context: vscode.ExtensionContext) {
 
     const disposable = vscode.window.onDidChangeActiveTextEditor(()=>{
         const id = vscode.window.activeTextEditor?.document.languageId;
-        if (!id || config.languages.includes(id)) {
+        if (id && config.languages.includes(id)) {
             statusBarItem.show();
         } else {
             statusBarItem.hide();

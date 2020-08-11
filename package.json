@@ -98,6 +98,112 @@
                     "text/xml"
                 ]
             }
+        ],
+        "snippets": [
+            {
+                "language": "apidoc",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "csharp",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "c",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "cpp",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "d",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "dart",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "erlang",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "go",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "groovy",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "java",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "julia",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "kotlin",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "lua",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "lisp",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "nim",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "pascal",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "perl",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "php",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "python",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "ruby",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "rust",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "scala",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "swift",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets/apidoc.json"
+            },
+            {
+                "language": "zig",
+                "path": "./snippets/apidoc.json"
+            }
         ]
     },
     "scripts": {

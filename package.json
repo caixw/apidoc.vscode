@@ -84,6 +84,23 @@
                 }
             }
         },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "apidoc-explorer-container",
+                    "title": "%apidoc-explorer%",
+                    "icon": "./resources/icon.svg"
+                }
+            ]
+        },
+        "views": {
+            "apidoc-explorer-container": [
+                {
+                    "id": "apidoc-explorer",
+                    "name": "%apidoc-explorer%"
+                }
+            ]
+        },
         "languages": [
             {
                 "id": "apidoc",
@@ -117,6 +134,7 @@
         "@types/semver": "^7.3.1",
         "@types/vscode": "^1.46.1",
         "@types/which": "^1.3.2",
+        "deepmerge": "^4.2.2",
         "del": "^5.1.0",
         "glob": "^7.1.4",
         "gulp": "^4.0.2",

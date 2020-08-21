@@ -6,7 +6,7 @@
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating-star/caixw.apidoc.svg)](https://marketplace.visualstudio.com/items?itemName=caixw.apidoc)
 [![dependencies Status](https://david-dm.org/caixw/apidoc.vscode/status.svg)](https://david-dm.org/caixw/apidoc.vscode)
 
-<https://apidoc.tools> 的 vscode 扩展
+<https://apidoc.tools> 的 vscode 扩展。请确保已经安装对应版本的 apidoc，安装方式可参考 <https://apidoc.tools/#install>。
 
 目前支持以下特性：
 

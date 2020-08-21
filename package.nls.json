@@ -3,5 +3,6 @@
 
     "config-title": "APIDOC Configuration",
     "config-cmd-desc": "apidoc path",
-    "config-port-desc": "LSP server port"
+    "config-port-desc": "LSP server port",
+    "apidoc-explorer": "APIDOC Explorer"
 }

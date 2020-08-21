@@ -1,53 +1,18 @@
 // SPDX-License-Identifier: MIT
 
-import  vscode from 'vscode';
-import {
-    LanguageClient,
-    LanguageClientOptions,
-    ServerOptions,
-} from 'vscode-languageclient';
-
+import vscode from 'vscode';
 import * as config from './config';
+import * as lsp from './lsp';
 import * as locale from './locale/locale';
-
 
 // 初始化本地化信息
 locale.init();
 config.init();
 
-let client: LanguageClient;
-
 export async function activate(context: vscode.ExtensionContext) {
     await config.activate();
-    await createLSP(context);
+    await lsp.activate(context);
     createStatusBarItem(context);
-}
-
-async function createLSP(context: vscode.ExtensionContext) {
-    const cfg = await config.getConfiguration();
-    if (cfg === null) { return; }
-
-    const serverOptions: ServerOptions = {
-        command: cfg.command,
-        args: ['lsp', '-p=' + cfg.port, '-m='+config.lspMode, '-h'],
-        options: {'env': config.environment}
-    };
-
-    const clientOptions: LanguageClientOptions = {
-        documentSelector: config.documentSelector(),
-    };
-
-    client = new LanguageClient(config.name, `${config.name} lsp server`, serverOptions, clientOptions);
-    client.onReady().then(() => {
-        const c = client.initializeResult && client.initializeResult.capabilities;
-        if (!c) {
-            const msg = locale.l('client-not-has-capabilities');
-            const ok = locale.l('ok');
-            return vscode.window.showErrorMessage(msg, ok);
-        }
-    });
-
-    context.subscriptions.push(client.start());
 }
 
 function createStatusBarItem(context: vscode.ExtensionContext) {
@@ -69,9 +34,6 @@ function createStatusBarItem(context: vscode.ExtensionContext) {
 }
 
 export async function deactivate() {
+    await lsp.deactivate();
     await config.deactivate();
-
-    if (client) {
-        return client.stop();
-    }
 }

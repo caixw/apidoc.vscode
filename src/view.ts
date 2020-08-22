@@ -102,6 +102,8 @@ class APITreeItem extends vscode.TreeItem {
         };
 
         this.description = api.summary;
+
+        this.iconPath = new vscode.ThemeIcon('symbol-interface');
     }
 }
 
@@ -113,6 +115,7 @@ export class FolderTreeItem extends APIContainer {
     constructor(f: { name: string, uri: vscode.Uri }) {
         super(f.name);
         this.uri = f.uri;
+        this.resourceUri = f.uri;
     }
 
     protected reset() {
@@ -159,6 +162,8 @@ class ServerTreeItem extends APIContainer {
     constructor(srv: Server) {
         super(srv.id);
         this.description = srv.url;
+
+        this.iconPath = new vscode.ThemeIcon('server');
     }
 }
 

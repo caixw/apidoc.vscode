@@ -30,6 +30,35 @@
         "body": [
             "$LINE_COMMENT <param name=\"${1}\" type=\"${2|string,number,object,bool,string.email,string.url,string.image,string.date,string.date-time,string.date-time,number.float,number.int|}\" summary=\"${3}\" />"
         ],
-        "description": "param 标签"
+        "description": "apidoc 文档中的 param 标签"
+    },
+
+    "callback": {
+        "prefix": "<callback ",
+        "body": [
+            "$LINE_COMMENT <callback method=\"${1|GET,POST,PUT,DELETE,OPTIONS,HEAD|}\">",
+            "$LINE_COMMENT <request mimetype=\"${2}\" type=\"${3|string,number,object,bool,string.email,string.url,string.image,string.date,string.date-time,string.date-time,number.float,number.int|}\" summary=\"${4}\" />",
+            "$LINE_COMMENT </request>",
+            "$LINE_COMMENT </callback>"
+        ],
+        "description": "apidoc 文档中的 callback 标签"
+    },
+
+    "request": {
+        "prefix": "<request ",
+        "body": [
+            "$LINE_COMMENT <request mimetype=\"${1}\" type=\"${2|string,number,object,bool,string.email,string.url,string.image,string.date,string.date-time,string.date-time,number.float,number.int|}\" summary=\"${3}\" />",
+            "$LINE_COMMENT </request>"
+        ],
+        "description": "apidoc 文档中的 request 标签"
+    },
+
+    "response": {
+        "prefix": "<response ",
+        "body": [
+            "$LINE_COMMENT <response status=\"${1}\" type=\"${2|string,number,object,bool,string.email,string.url,string.image,string.date,string.date-time,string.date-time,number.float,number.int|}\">",
+            "$LINE_COMMENT </response>",
+        ],
+        "description": "apidoc 文档中的 request 标签"
     }
 }

@@ -1,0 +1,27 @@
+{
+    "api": {
+        "prefix": "<api ",
+        "description": "apidoc 文档中的 api 元素",
+        "body": [
+            "$LINE_COMMENT <api method=\"${1:GET}\" summary=\"${2}\">",
+                "$LINE_COMMENT <path path=\"${3}\" />",
+                "$LINE_COMMENT <server>${4}</server>",
+                "$LINE_COMMENT <response status=\"${5}\" type=\"${6}\">",
+                "$LINE_COMMENT </response>",
+            "$LINE_COMMENT </api>"
+        ]
+    },
+
+    "apidoc": {
+        "prefix": "<apidoc ",
+        "body": [
+            "$LINE_COMMENT <apidoc version=\"${1}\">",
+                "$LINE_COMMENT <title>${2}</title>",
+                "$LINE_COMMENT <description type=\"${3:html}\"><![CDATA[",
+                    "$LINE_COMMENT ${4}",
+                "$LINE_COMMENT ]]></description>",
+            "$LINE_COMMENT </apidoc>"
+        ],
+        "description": "apidoc 文档中的 apidoc 元素"
+    }
+}

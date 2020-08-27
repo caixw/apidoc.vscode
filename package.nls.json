@@ -4,5 +4,6 @@
     "config-title": "APIDOC Configuration",
     "config-cmd-desc": "apidoc path",
     "config-port-desc": "LSP server port",
-    "apidoc-explorer": "APIDOC Explorer"
+    "apidoc-explorer": "APIDOC Explorer",
+    "refresh": "refresh apidoc"
 }

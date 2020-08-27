@@ -10,10 +10,8 @@ import { suite } from 'mocha';
 config.init();
 
 const outline = {
-    workspaceFolder: {
-        name: 'f1',
-        uri: './f1/'
-    },
+    name: 'f1',
+    uri: './f1/',
     title: 'title',
     version: '1.1.1',
     location: {
@@ -41,17 +39,17 @@ const outline = {
 
 suite('FolderTreeItem test suite', () => {
     test('match', () => {
-        const f = new view.FolderTreeItem({ name: 'f1', uri: vscode.Uri.file('./f1/') });
+        const f = new view.FolderTreeItem({ name: 'f1', uri: vscode.Uri.file('./f1/'), index: 1 });
         const o = deepmerge({}, outline);
 
         assert.ok(f.fill(o));
 
-        o.workspaceFolder.uri = './not-exists';
+        o.uri = './not-exists';
         assert.ok(!f.fill(o));
     });
 
     test('fill', () => {
-        const f = new view.FolderTreeItem({ name: 'f1', uri: vscode.Uri.file('./f1/') });
+        const f = new view.FolderTreeItem({ name: 'f1', uri: vscode.Uri.file('./f1/'), index: 1 });
         const o = deepmerge({}, outline);
 
         assert.ok(f.fill(o));

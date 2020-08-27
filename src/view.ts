@@ -2,6 +2,7 @@
 
 import vscode from 'vscode';
 import { LanguageClient } from 'vscode-languageclient';
+import { l } from './locale/locale';
 
 export class DocTreeDataProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
     private client: LanguageClient;
@@ -16,7 +17,11 @@ export class DocTreeDataProvider implements vscode.TreeDataProvider<vscode.TreeI
 
     constructor(client: LanguageClient) {
         this.client = client;
-        this.update(false);
+
+        this.folders = [];
+        for (const f of vscode.workspace.workspaceFolders!) {
+            this.folders.push(new FolderTreeItem(f));
+        }
 
         // 注册 apidoc/outline 处理事件钩子
         this.client.onNotification('apidoc/outline', (outline: Outline) => {
@@ -27,20 +32,6 @@ export class DocTreeDataProvider implements vscode.TreeDataProvider<vscode.TreeI
                 }
             }
         });
-    }
-
-    // 刷新文档列表
-    //
-    // refresh 表示是否请求服务器刷新数据。
-    update(refresh: boolean) {
-        this.folders = [];
-        for (const f of vscode.workspace.workspaceFolders!) {
-            this.folders.push(new FolderTreeItem(f));
-
-            if (refresh) {
-                this.client.sendNotification('apidoc/refreshOutline', f);
-            }
-        }
     }
 
     getChildren(element?: vscode.TreeItem): vscode.TreeItem[] {
@@ -102,20 +93,20 @@ class APITreeItem extends vscode.TreeItem {
         };
 
         this.description = api.summary;
-
         this.iconPath = new vscode.ThemeIcon('symbol-interface');
     }
 }
 
 // 项目列表项，包含了 API 列表和服务器列表。
 export class FolderTreeItem extends APIContainer {
-    uri: vscode.Uri;
+    folder: vscode.WorkspaceFolder;
     servers: ServerTreeItem[] = [];
 
-    constructor(f: { name: string, uri: vscode.Uri }) {
+    constructor(f: vscode.WorkspaceFolder) {
         super(f.name);
-        this.uri = f.uri;
+        this.folder = f;
         this.resourceUri = f.uri;
+        this.contextValue = 'apidoc-folder';
     }
 
     protected reset() {
@@ -130,6 +121,8 @@ export class FolderTreeItem extends APIContainer {
         }
 
         this.reset();
+
+        this.tooltip = outline.err ?? (outline.noConfig ? l('not-found-apidoc-config') : '');
 
         outline.servers?.forEach((srv) => {
             const s = new ServerTreeItem(srv);
@@ -152,9 +145,9 @@ export class FolderTreeItem extends APIContainer {
 
     // 确定 outline 与当前的项目是否匹配。如果 uri 相等就判断为匹配。
     private matched(outline: Outline): boolean {
-        const folder = vscode.Uri.parse(outline.workspaceFolder.uri);
-        return this.uri.scheme === folder.scheme
-            && this.uri.path === folder.path;
+        const folder = vscode.Uri.parse(outline.uri);
+        return this.folder.uri.scheme === folder.scheme
+            && this.folder.uri.path === folder.path;
     }
 }
 
@@ -168,14 +161,15 @@ class ServerTreeItem extends APIContainer {
 }
 
 interface Outline {
-    workspaceFolder: {
-        uri: string;
-        name: string;
-    };
+    uri: string;
+    name: string;
 
-    location: Location;
-    title: string;
-    version: string;
+    err?: string;
+    noConfig?: boolean;
+
+    location?: Location;
+    title?: string;
+    version?: string;
     tags?: {
         id: string;
         title: string;

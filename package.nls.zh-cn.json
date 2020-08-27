@@ -5,5 +5,6 @@
     "config-title": "APIDOC 配置",
     "config-cmd-desc": "apidoc 文件的路径，LSP 服务从该程序获取。",
     "config-port-desc": "LSP 服务的端口。",
-    "apidoc-explorer": "APIDOC 文档视图"
+    "apidoc-explorer": "APIDOC 文档视图",
+    "refresh": "刷新 APIDOC 文档"
 }

@@ -40,6 +40,21 @@ export async function activate(context: vscode.ExtensionContext) {
         const treeViewProvider = new view.DocTreeDataProvider(client);
         const p = vscode.window.registerTreeDataProvider<vscode.TreeItem>('apidoc-explorer', treeViewProvider);
         context.subscriptions.push(p);
+    }).then(()=>{
+        const refresh = vscode.commands.registerCommand('apidoc.refresh', async (f?: view.FolderTreeItem)=>{
+            let folder = f?.folder;
+
+            if (!folder) {
+                const picked = await vscode.window.showWorkspaceFolderPick();
+                if (!picked) {
+                    vscode.window.showErrorMessage(locale.l('unpick-any-folder'));
+                    return;
+                }
+                folder = picked;
+            }
+            client.sendNotification('apidoc/refreshOutline', {name: folder.name, uri: folder.uri.toString()});
+        });
+        context.subscriptions.push(refresh);
     });
 
     context.subscriptions.push(client.start());

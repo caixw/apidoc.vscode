@@ -64,9 +64,12 @@
         "onLanguage:scala",
         "onLanguage:swift",
         "onLanguage:typescript",
-        "onLanguage:zig"
+        "onLanguage:zig",
+
+        "onCommand:apidoc.refresh"
     ],
     "main": "./out/extension.js",
+
     "contributes": {
         "configuration": {
             "type": "object",
@@ -84,6 +87,13 @@
                 }
             }
         },
+        "commands":[
+            {
+                "command": "apidoc.refresh",
+                "title": "%refresh%",
+                "icon": "$(refresh)"
+            }
+        ],
         "viewsContainers": {
             "activitybar": [
                 {
@@ -98,6 +108,15 @@
                 {
                     "id": "apidoc-explorer",
                     "name": "%apidoc-explorer%"
+                }
+            ]
+        },
+        "menus":{
+            "view/item/context": [
+                {
+                    "command": "apidoc.refresh",
+                    "when": "view == 'apidoc-explorer' && viewItem == 'apidoc-folder'",
+                    "group": "inline"
                 }
             ]
         },

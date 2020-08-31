@@ -6,6 +6,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [v7.2.0]
+
+### Added
+
+- 添加侧边栏；
+- 添加代码片段；
+- 在支持 apidoc 的文档状态栏上显示 apidoc 标记；
+
 ## [v7.1.0]
 
 ### Added

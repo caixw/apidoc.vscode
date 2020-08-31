@@ -2,7 +2,7 @@
     "name": "apidoc",
     "displayName": "apidoc",
     "description": "%description%",
-    "version": "7.1.0",
+    "version": "7.2.0",
     "publisher": "caixw",
     "preview": true,
     "author": {

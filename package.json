@@ -165,7 +165,7 @@
         "gulp-cached": "^1.1.1",
         "gulp-sourcemaps": "^2.6.5",
         "gulp-typescript": "^5.0.1",
-        "mocha": "^8.0.1",
+        "mocha": "^10.1.0",
         "tslint": "^6.1.2",
         "typescript": "^3.8.3",
         "vsce": "^1.66.0",
